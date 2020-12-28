@@ -20,13 +20,6 @@ pipeline {
         stage('Docker build') {
             steps {
             echo"workspace is $WORKSPACE"
-            dir("$workspace"){
-              script {
-	              docker.withRegistry('https://index.docker.io/v1','Dockerhub') {
-			   def image - docker.build('hellow:v3')
-			   image.push()
-	                  }
-		     }
               }    
         }
     }
