@@ -23,10 +23,10 @@ pipeline {
             dir("$workspace"){
               script {
 	              docker.withRegistry('https://index.docker.io/v1','Dockerhub') {
-			         def image - docker.build('faziriya/hellow:v3'}
-			         image.push()
-			         }
-			}
+			   def image - docker.build('faziriya/hellow:v3'}
+			   image.push()
+	                  }
+		     }
               }    
         }
     }
