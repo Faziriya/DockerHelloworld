@@ -11,7 +11,7 @@ pipeline {
             steps {
             sh(script: 'docker images -a')
             sh(script: """
-               docker built -t hellow:v1 .
+               docker build -t hellow:v3 .
                docker images -a
                cd ..
             """)
