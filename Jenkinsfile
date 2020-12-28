@@ -17,10 +17,5 @@ pipeline {
             """)
             }
         }
-        stage('Docker build') {
-            steps {
-            echo"workspace is $WORKSPACE"
-              }    
-        }
     }
 }
