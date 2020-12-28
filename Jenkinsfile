@@ -1,19 +1,22 @@
 pipeline {
     agent any
+
     stages {
-        stage('Hello') {
+        stage('Verfify Branch') {
             steps {
-                echo 'Hello World'
+                echo "$GIT_BRANCH"
             }
-        }
-     stage('Docker build') {
+        }   
+        stage('Docker build') {
             steps {
+            sh(script: 'docker images -a')
             sh(script: """
                cd DockerHelloworld/
                docker built -t hellow:v1 .
                docker images -a
                cd ..
+            """)
             }
-        }
+        }       
     }
 }
