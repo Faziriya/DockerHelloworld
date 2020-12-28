@@ -1,2 +1,3 @@
 FROM alpine
-CMD ["echo", "hellow world"]
+COPY hello.sh /hello.sh
+ENTRYPOINT  ["sh", "/hello.sh"]
