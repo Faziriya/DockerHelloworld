@@ -1,6 +1,10 @@
 pipeline {
+    environment {
+      registry = "faziriya/firstrepo"
+      registryCredential = ‘DockerHub’		    
+    }
     agent any
-
+  
     stages {
         stage('Verfify Branch') {
             steps {
@@ -17,7 +21,16 @@ pipeline {
             """)
             }
         }
-       stage('Docker push') {
+        stage('Deploy Image') {
+          steps{
+             script {
+                 docker.withRegistry( '', registryCredential ) {
+                 dockerImage.push()
+                 }
+             } 
+          }
+       } 
+       /* stage('Docker push') {
             steps {
             echo "WORKSPACE IS $WORKSPACE"
                 dir("$WORKSPACE/") {
@@ -29,6 +42,6 @@ pipeline {
                     }
                 }
             }
-        }        
+        }   */       
     }
 }   
