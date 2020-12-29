@@ -5,28 +5,28 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  stage('Verfify Branch') {
-      steps {
-                echo "$GIT_BRANCH"
-            }
-        }
-  }
-  stage('Building image') {
+  stages { 
+    stage('Building image') {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
-   }
-   stage('Deploy Image') {
+    }
+    stage('Deploy Image') {
       steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
+         script {
+            docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
         }
       }
-   }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
   }
 }
 
