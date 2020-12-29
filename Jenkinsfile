@@ -17,5 +17,11 @@ pipeline {
             """)
             }
         }
+       stage('Docker push') {
+            steps {
+            echo "WORKSPACE IS $WORKSPACE"
+            }
+        }
+        
     }
 }
