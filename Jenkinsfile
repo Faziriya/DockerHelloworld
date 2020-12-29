@@ -20,10 +20,11 @@ pipeline {
        stage('Docker push') {
             steps {
             echo "WORKSPACE IS $WORKSPACE"
-                dir("DockerHelloworld") {
+                dir("$WORKSPACE/") {
                     script {
                         docker.withRegistry('https://index.io/v1',DockerHub'){
                             def image = docker.build('faziriya/firstrepo:latest')
+                            image.push()
                         }
                     }
                 }
