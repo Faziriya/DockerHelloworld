@@ -1,7 +1,8 @@
 pipeline {
     environment {
-      registry = "faziriya/firstrepo"
-      registryCredential = ‘DockerHub’		    
+      registry = 'faziriya/firstrepo'
+      registryCredential = 'DockerHub'	
+      dockerImage = ''  
     }
     agent any
   
