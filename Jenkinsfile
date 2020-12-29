@@ -5,12 +5,11 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/Faziriya/DockerHelloworld.git'
-      }
-    }
+  stage('Verfify Branch') {
+            steps {
+                echo "$GIT_BRANCH"
+            }
+        }  
     stage('Building image') {
       steps{
         script {
