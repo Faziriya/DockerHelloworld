@@ -22,7 +22,7 @@ pipeline {
             echo "WORKSPACE IS $WORKSPACE"
                 dir("$WORKSPACE/") {
                     script {
-                        docker.withRegistry('https://index.io/v1',DockerHub'){
+                        docker.withRegistry('https://index.io/v1','DockerHub'){
                             def image = docker.build('faziriya/firstrepo:latest')
                             image.push()
                         }
