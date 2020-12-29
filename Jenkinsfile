@@ -15,7 +15,7 @@ pipeline {
                docker images -a
                cd ..
             """)
-      
+            }
         }
        stage('Docker push') {
             steps {
@@ -31,5 +31,4 @@ pipeline {
             }
         }        
     }
- }
-}    
+}   
